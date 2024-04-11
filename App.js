@@ -1,9 +1,10 @@
-const express = require("express");
+import express from "express";
+import Hello from "./Hello.js";
+import Lab5 from "./Lab5.js";
 
 const app = express();
 
-app.get("/hello", (req, res) => {
-  res.send("Hello World!");
-});
+Hello(app);
+Lab5(app);
 
 app.listen(4000);

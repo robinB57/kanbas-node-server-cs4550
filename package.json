@@ -1,10 +1,12 @@
 {
+  "type": "module",
   "name": "kanbas-node-server-cs4550",
   "version": "1.0.0",
   "description": "Node.js HTTP server for kanbas-web-app-cs4550",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js"
   },
   "author": "",
   "license": "ISC",
