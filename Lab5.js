@@ -123,6 +123,7 @@ export default function Lab5(app) {
       id: new Date().getTime(),
       title: "New Task",
       completed: false,
+      description: "New Description",
     };
     todos.push(newTodo);
     res.json(newTodo);
