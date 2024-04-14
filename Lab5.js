@@ -15,10 +15,10 @@ const module = {
 };
 
 const todos = [
-  { id: 1, title: "Task 1", completed: false },
-  { id: 2, title: "Task 2", completed: true },
-  { id: 3, title: "Task 3", completed: false },
-  { id: 4, title: "Task 4", completed: true },
+  { id: 1, title: "Task 1", completed: false, description: "Description 1" },
+  { id: 2, title: "Task 2", completed: true, description: "Description 2" },
+  { id: 3, title: "Task 3", completed: false, description: "Description 3" },
+  { id: 4, title: "Task 4", completed: true, description: "Description 4" },
 ];
 
 export default function Lab5(app) {
@@ -118,28 +118,40 @@ export default function Lab5(app) {
     }
     res.json(todos);
   });
-  app.get("/a5/todos/create", (req, res) => {
+  app.post("/a5/todos/", (req, res) => {
     const newTodo = {
       id: new Date().getTime(),
       title: "New Task",
       completed: false,
     };
     todos.push(newTodo);
-    res.json(todos);
+    res.json(newTodo);
   });
   app.get("/a5/todos/:id", (req, res) => {
     const { id } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
     res.json(todo);
   });
-  app.get("/a5/todos/:id/delete", (req, res) => {
+  app.put("/a5/todos/:id", (req, res) => {
+    const { id } = req.params;
+    const todo = todos.find((t) => t.id === parseInt(id));
+    if (todo !== undefined) {
+      todo.title = req.body.title;
+      todo.description = req.body.description;
+      todo.due = req.body.due;
+      todo.completed = req.body.completed;
+    }
+    res.sendStatus(200);
+  });
+
+  app.delete("/a5/todos/:id/", (req, res) => {
     const { id } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
     const todoIndex = todos.indexOf(todo);
     if (todoIndex !== -1) {
       todos.splice(todoIndex, 1);
     }
-    res.json(todos);
+    res.sendStatus(200);
   });
   app.get("/a5/todos/:id/title/:newTitle", (req, res) => {
     const { id, newTitle } = req.params;
