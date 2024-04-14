@@ -23,7 +23,7 @@ const todos = [
 
 export default function Lab5(app) {
   app.get("/a5/welcome", (req, res) => {
-    res.send("Welcome to Assignment 5");
+    res.send("Welcome to Assignment 5!");
   });
 
   app.get("/a5/add/:a/:b", (req, res) => {
