@@ -51,7 +51,7 @@ export default [
   },
   {
     _id: "M203",
-    name: "Systems Module 1",
+    name: "Systems Module 3",
     description: "UNIX",
     course: "CS3650",
     lessons: [
