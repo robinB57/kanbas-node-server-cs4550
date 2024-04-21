@@ -20,7 +20,11 @@ export function findUserByCredentials(username, password) {
   return model.findOne({ username, password });
 }
 export function updateUser(userId, user) {
-  return model.findByIdAndUpdate({ _id: userId }, { $set: user });
+  return model.findByIdAndUpdate(
+    { _id: userId },
+    { $set: user },
+    { returnDocument: "after" }
+  );
 }
 export function deleteUser(userId) {
   return model.deleteOne({ _id: userId });

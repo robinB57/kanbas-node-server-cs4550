@@ -11,7 +11,11 @@ export function findCourseById(courseId) {
   return model.findById(courseId);
 }
 export function updateCourse(courseId, course) {
-  return model.findByIdAndUpdate({ _id: courseId }, { $set: course });
+  return model.findByIdAndUpdate(
+    { _id: courseId },
+    { $set: course },
+    { returnDocument: "after" }
+  );
 }
 export function deleteCourse(courseId) {
   return model.deleteOne({ _id: courseId });
