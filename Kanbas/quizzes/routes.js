@@ -8,7 +8,13 @@ export default function QuizRoutes(app) {
   }
   async function createQuestion(req, res) {
     const { quizId } = req.params;
-    const question = await dao.createQuestion(quizId, req.body);
+    let question;
+    try {
+      question = await dao.createQuestion(quizId, req.body);
+    } catch (e) {
+      res.sendStatus(422);
+      return;
+    }
     res.json(question);
   }
 
@@ -36,7 +42,13 @@ export default function QuizRoutes(app) {
   }
   async function updateQuestion(req, res) {
     const { questionId } = req.params;
-    const question = await dao.updateQuestion(questionId, res.body);
+    let question;
+    try {
+      question = await dao.updateQuestion(questionId, res.body);
+    } catch (e) {
+      res.sendStatus(422);
+      return;
+    }
     res.json(question);
   }
 

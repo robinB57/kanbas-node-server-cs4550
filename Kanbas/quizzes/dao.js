@@ -1,4 +1,4 @@
-import model, { questionModel, quizModel } from "./model.js";
+import { questionModel, quizModel } from "./model.js";
 
 function validateQuestion(question) {
   switch (question.questionType) {
