@@ -66,7 +66,6 @@ export default function QuizRoutes(app) {
 
   app.post("/api/quizzes", createQuiz);
   app.get("/api/quizzes", findAllQuizzes);
-  app.put("/api/quizzes", updateQuiz);
   app.get("/api/quizzes/:quizId", findQuizById);
   app.put("/api/quizzes/:quizId", updateQuiz);
   app.delete("/api/quizzes/:quizId", deleteQuiz);

@@ -40,6 +40,11 @@ export const questionSchema = new mongoose.Schema(
 
 export const quizSchema = new mongoose.Schema(
   {
+    course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CourseModel",
+      required: true,
+    },
     questions: [{ type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel" }],
     title: { type: String, default: "New Quiz" },
     description: { type: String, default: "" },
