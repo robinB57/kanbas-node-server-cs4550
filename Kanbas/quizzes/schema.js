@@ -10,7 +10,7 @@ export const questionSchema = new mongoose.Schema(
     title: { type: String, default: "New Question" },
     points: { type: Number, default: "5" },
     text: { type: String, default: "" },
-    order: { type: Number, required: true },
+    order: Number,
     questionType: {
       type: String,
       enum: ["MULTIPLE_CHOICE", "TRUE_OR_FALSE", "FILL_IN_BLANKS"],
