@@ -8,7 +8,7 @@ export const questionSchema = new mongoose.Schema(
       required: true,
     },
     title: { type: String, default: "New Question" },
-    points: { type: Number, default: "5" },
+    points: { type: Number, default: 5 },
     text: { type: String, default: "" },
     order: Number,
     questionType: {
@@ -74,6 +74,7 @@ export const quizSchema = new mongoose.Schema(
     dueDate: Date,
     availableDate: Date,
     untilDate: Date,
+    isPublished: { type: Boolean, default: false },
   },
   { collection: "quizzes" }
 );
