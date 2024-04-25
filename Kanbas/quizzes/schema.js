@@ -18,9 +18,9 @@ export const questionSchema = new mongoose.Schema(
     },
     multipleChoiceAnswers: [
       {
-        answerText: { type: String, required: true },
-        isCorrect: { type: Boolean, required: true },
-        order: { type: Number, required: true },
+        answerText: String,
+        isCorrect: Boolean,
+        order: Number,
       },
     ],
     trueOrFalseAnswer: {
@@ -29,9 +29,9 @@ export const questionSchema = new mongoose.Schema(
     },
     fillInBlanksAnswers: [
       {
-        correctAnswer: { type: String, required: true },
-        isCorrect: { type: Boolean, required: true },
-        order: { type: Number, required: true },
+        correctAnswer: String,
+        isCorrect: Boolean,
+        order: Number,
       },
     ],
   },
