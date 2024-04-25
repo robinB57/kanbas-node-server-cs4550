@@ -26,7 +26,7 @@ export async function createQuestion(quizId, question) {
     ...question,
     quiz: quizId,
   });
-  quizModel.findOneAndUpdate(
+  await quizModel.findOneAndUpdate(
     { _id: quizId },
     { $push: { questions: newQuestion._id } }
   );

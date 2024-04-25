@@ -37,14 +37,14 @@ export default function QuizRoutes(app) {
   // Update
   async function updateQuiz(req, res) {
     const { quizId } = req.params;
-    const quiz = await dao.updateQuiz(quizId, res.body);
+    const quiz = await dao.updateQuiz(quizId, req.body);
     res.json(quiz);
   }
   async function updateQuestion(req, res) {
     const { questionId } = req.params;
     let question;
     try {
-      question = await dao.updateQuestion(questionId, res.body);
+      question = await dao.updateQuestion(questionId, req.body);
     } catch (e) {
       res.sendStatus(422);
       return;
