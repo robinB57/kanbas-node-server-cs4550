@@ -33,11 +33,6 @@ export async function findQuestionsByQuiz(quizId) {
   return questionModel.find({ quiz: quizId });
 }
 export function updateQuestion(questionId, question) {
-  try {
-    validateQuestion(question);
-  } catch (e) {
-    return false;
-  }
   return questionModel.findByIdAndUpdate(
     { _id: questionId },
     { $set: question },
