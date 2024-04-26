@@ -49,7 +49,7 @@ export async function createQuestion(quizId, question) {
     return false;
   }
   const newQuestion = await questionModel.create({ ...question, quiz: quizId });
-  quizModel.findOneAndUpdate(
+  quizModel.updateOne(
     { _id: quizId },
     { $push: { questions: newQuestion._id } }
   );
