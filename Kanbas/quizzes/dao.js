@@ -41,6 +41,9 @@ export function updateQuestion(questionId, question) {
 }
 
 export async function deleteQuestion(questionId, quizId) {
-  await quizModel.updateOne({ _id: quizId }, { $pull: { _id: questionId } });
+  await quizModel.updateOne(
+    { _id: quizId },
+    { $pull: { questions: questionId } }
+  );
   return questionModel.deleteOne({ _id: questionId });
 }
