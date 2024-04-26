@@ -72,7 +72,6 @@ export function updateQuestion(questionId, question) {
 }
 
 export async function deleteQuestion(questionId, quizId) {
-  const quiz = await findQuizById(quizId);
-  quiz.questions.pull({ _id: questionId });
+  await quizModel.updateOne({ _id: quizId }, { $pull: { _id: questionId } });
   return questionModel.deleteOne({ _id: questionId });
 }
