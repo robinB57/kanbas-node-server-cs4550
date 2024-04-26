@@ -8,7 +8,7 @@ export const questionSchema = new mongoose.Schema(
       required: true,
     },
     title: { type: String, default: "New Question" },
-    points: { type: Number, default: "5" },
+    points: { type: Number, default: 5, minimum: 0, maximum: 100 },
     text: { type: String, default: "" },
     order: Number,
     questionType: {
@@ -18,9 +18,9 @@ export const questionSchema = new mongoose.Schema(
     },
     multipleChoiceAnswers: [
       {
-        answerText: { type: String, required: true },
-        isCorrect: { type: Boolean, required: true },
-        order: { type: Number, required: true },
+        answerText: String,
+        isCorrect: Boolean,
+        order: Number,
       },
     ],
     trueOrFalseAnswer: {
@@ -29,9 +29,9 @@ export const questionSchema = new mongoose.Schema(
     },
     fillInBlanksAnswers: [
       {
-        correctAnswer: { type: String, required: true },
-        isCorrect: { type: Boolean, required: true },
-        order: { type: Number, required: true },
+        correctAnswer: String,
+        isCorrect: Boolean,
+        order: Number,
       },
     ],
   },
@@ -40,6 +40,11 @@ export const questionSchema = new mongoose.Schema(
 
 export const quizSchema = new mongoose.Schema(
   {
+    course: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CourseModel",
+      required: true,
+    },
     questions: [{ type: mongoose.Schema.Types.ObjectId, ref: "QuestionModel" }],
     title: { type: String, default: "New Quiz" },
     description: { type: String, default: "" },
@@ -59,8 +64,9 @@ export const quizSchema = new mongoose.Schema(
       default: "QUIZZES",
     },
     shuffleAnswers: { type: Boolean, default: true },
-    timeLimit: { type: Number, default: 20 }, // in minutes
+    timeLimit: { type: Number, default: 20, minimum: 0, maximum: 240}, // in minutes
     multipleAttempts: { type: Boolean, default: false },
+    numAttempts: {type: Number, default: 1, minimum: 1, maximum: 10}, 
     showCorrectAnswers: { type: Boolean, default: false },
     accessCode: { type: String, default: "" },
     oneQuestionAtATime: { type: Boolean, default: true },
@@ -69,6 +75,7 @@ export const quizSchema = new mongoose.Schema(
     dueDate: Date,
     availableDate: Date,
     untilDate: Date,
+    isPublished: { type: Boolean, default: false },
   },
   { collection: "quizzes" }
 );
