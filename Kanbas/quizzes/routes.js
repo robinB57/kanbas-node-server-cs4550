@@ -64,13 +64,13 @@ export default function QuizRoutes(app) {
     res.json(status);
   }
 
+  app.post("/api/quizzes/:quizId/questions", createQuestion);
+  app.get("/api/quizzes/:quizId/questions", findQuestionsByQuiz);
+  app.put("/api/quizzes/:quizId/questions/:questionId", updateQuestion);
+  app.delete("/api/quizzes/:quizId/questions/:questionId", deleteQuestion);
   app.post("/api/quizzes", createQuiz);
   app.get("/api/quizzes", findAllQuizzes);
   app.get("/api/quizzes/:quizId", findQuizById);
   app.put("/api/quizzes/:quizId", updateQuiz);
   app.delete("/api/quizzes/:quizId", deleteQuiz);
-  app.post("/api/quizzes/:quizId/questions", createQuestion);
-  app.get("/api/quizzes/:quizId/questions", findQuestionsByQuiz);
-  app.put("/api/quizzes/:quizId/questions/:questionId", updateQuestion);
-  app.delete("/api/quizzes/:quizId/questions/:questionId", deleteQuestion);
 }

@@ -39,7 +39,7 @@ export function updateQuiz(quizId, quiz) {
   );
 }
 export function deleteQuiz(quizId) {
-  return model.deleteOne({ _id: quizId });
+  return quizModel.deleteOne({ _id: quizId });
 }
 
 export async function createQuestion(quizId, question) {
