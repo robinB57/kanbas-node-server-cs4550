@@ -30,7 +30,6 @@ export const questionSchema = new mongoose.Schema(
     fillInBlanksAnswers: [
       {
         correctAnswer: String,
-        isCorrect: Boolean,
         order: Number,
       },
     ],
@@ -64,9 +63,9 @@ export const quizSchema = new mongoose.Schema(
       default: "QUIZZES",
     },
     shuffleAnswers: { type: Boolean, default: true },
-    timeLimit: { type: Number, default: 20, minimum: 0, maximum: 240}, // in minutes
+    timeLimit: { type: Number, default: 20, minimum: 0, maximum: 240 }, // in minutes
     multipleAttempts: { type: Boolean, default: false },
-    numAttempts: {type: Number, default: 1, minimum: 1, maximum: 10}, 
+    numAttempts: { type: Number, default: 1, minimum: 1, maximum: 10 },
     showCorrectAnswers: { type: Boolean, default: false },
     accessCode: { type: String, default: "" },
     oneQuestionAtATime: { type: Boolean, default: true },
