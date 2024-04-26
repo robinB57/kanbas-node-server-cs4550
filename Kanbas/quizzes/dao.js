@@ -1,26 +1,5 @@
 import { questionModel, quizModel } from "./model.js";
 
-function validateQuestion(question) {
-  switch (question.questionType) {
-    case "MULTIPLE_CHOICE":
-      assert(question.multipleChoiceAnswers !== undefined);
-      assert(question.multipleChoiceAnswers.length > 0);
-      delete question.trueOrFalseAnswer;
-      delete question.fillInBlanksAnswers;
-    case "TRUE_OR_FALSE":
-      assert(question.trueOrFalseAnswer !== undefined);
-      delete question.multipleChoiceAnswers;
-      delete question.fillInBlanksAnswers;
-    case "FILL_IN_BLANKS":
-      assert(question.fillInBlanksAnswers !== undefined);
-      assert(question.fillInBlanksAnswers.length > 0);
-      delete question.multipleChoiceAnswers;
-      delete question.trueOrFalseAnswer;
-    default:
-      assert(false);
-  }
-}
-
 export function createQuiz(quiz) {
   delete quiz._id;
   return quizModel.create(quiz);
@@ -43,11 +22,6 @@ export function deleteQuiz(quizId) {
 }
 
 export async function createQuestion(quizId, question) {
-  try {
-    validateQuestion(question);
-  } catch (e) {
-    return false;
-  }
   const newQuestion = await questionModel.create({ ...question, quiz: quizId });
   await quizModel.updateOne(
     { _id: quizId },
